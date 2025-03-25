@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvíz na prijímačky</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 15px; }
+        .result { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h2>Kvíz na prijímačky (Biológia a Slovenčina)</h2>
+
+    <form id="quizForm">
+        <div class="question">
+            <p>1. Ktorý orgán zabezpečuje dýchanie u človeka?</p>
+            <input type="radio" name="q1" value="a"> Srdce<br>
+            <input type="radio" name="q1" value="b"> Mozog<br>
+            <input type="radio" name="q1" value="c"> Pľúca<br>
+        </div>
+
+        <div class="question">
+            <p>2. Ktorá z týchto rastlín je ihličnan?</p>
+            <input type="radio" name="q2" value="a"> Buk<br>
+            <input type="radio" name="q2" value="b"> Smrek<br>
+            <input type="radio" name="q2" value="c"> Dub<br>
+        </div>
+
+        <div class="question">
+            <p>3. Aký je správny tvar slova v množnom čísle: "dieťa"?</p>
+            <input type="radio" name="q3" value="a"> Dieťata<br>
+            <input type="radio" name="q3" value="b"> Deti<br>
+            <input type="radio" name="q3" value="c"> Dieťaťa<br>
+        </div>
+
+        <div class="question">
+            <p>4. Ktorý autor napísal dielo „Jozef Mak“?</p>
+            <input type="radio" name="q4" value="a"> Martin Kukučín<br>
+            <input type="radio" name="q4" value="b"> Jozef Cíger-Hronský<br>
+            <input type="radio" name="q4" value="c"> Ivan Krasko<br>
+        </div>
+
+        <button type="button" onclick="vyhodnotitQuiz()">Odoslať</button>
+    </form>
+
+    <p class="result" id="result"></p>
+
+    <script>
+        function vyhodnotitQuiz() {
+            let spravneOdpovede = { q1: "c", q2: "b", q3: "b", q4: "b" };
+            let body = 0;
+
+            for (let otazka in spravneOdpovede) {
+                let odpoved = document.querySelector('input[name="'+otazka+'"]:checked');
+                if (odpoved && odpoved.value === spravneOdpovede[otazka]) {
+                    body++;
+                }
+            }
+
+            document.getElementById("result").textContent = "Tvoj výsledok: " + body + " / 4";
+        }
+    </script>
+
+</body>
+</html>
